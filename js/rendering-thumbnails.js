@@ -1,21 +1,26 @@
-import {getDataArray} from './data.js';
-
 const picturesContainer = document.querySelector('.pictures');
 const randomUserTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const usersData = getDataArray();
-const picturesContainerFragment = document.createDocumentFragment();
+const createThumbnail = function ({url, description, likes, comments}) {
+  const thumbnail = randomUserTemplate.cloneNode(true);
+  thumbnail.querySelector('.picture__img').src = url;
+  thumbnail.querySelector('.picture__img').alt = description;
+  thumbnail.querySelector('.picture__likes').textContent = likes;
+  thumbnail.querySelector('.picture__comments').textContent = comments.length;
 
-usersData.forEach((user) => {
-  const userElement = randomUserTemplate.cloneNode(true);
-  userElement.querySelector('.picture__img').src = user.url;
-  userElement.querySelector('.picture__img').alt = user.description;
-  userElement.querySelector('.picture__likes').textContent = user.likes;
-  userElement.querySelector('.picture__comments').textContent = user.comments.length;
+  return thumbnail;
+};
 
-  picturesContainerFragment.append(userElement);
-});
+const renderThumbnails = function (pictures) {
+  const picturesContainerFragment = document.createDocumentFragment();
 
-picturesContainer.append(picturesContainerFragment);
+  pictures.forEach((picture) => {
+    const thumbnail = createThumbnail (picture);
 
-export {picturesContainer};
+    picturesContainerFragment.append(thumbnail);
+  });
+
+  picturesContainer.append(picturesContainerFragment);
+};
+
+export {renderThumbnails};

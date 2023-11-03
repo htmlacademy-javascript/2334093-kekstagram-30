@@ -1,3 +1,6 @@
 import {getDataArray} from './data.js';
-import './rendering-thumbnails.js';
-getDataArray();
+import {renderThumbnails} from './rendering-thumbnails.js';
+
+const pictures = getDataArray();
+
+renderThumbnails(pictures);
