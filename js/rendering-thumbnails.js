@@ -6,12 +6,12 @@ const randomUserTemplate = document.querySelector('#picture').content.querySelec
 const usersData = getDataArray();
 const picturesContainerFragment = document.createDocumentFragment();
 
-usersData.forEach((url, description, likes, comments) => {
+usersData.forEach((user) => {
   const userElement = randomUserTemplate.cloneNode(true);
-  userElement.querySelector('.picture__img').src = url;
-  userElement.querySelector('.picture__img').alt = description;
-  userElement.querySelector('.picture__likes').textContent = likes;
-  userElement.querySelector('.picture__comments').textContent = comments;
+  userElement.querySelector('.picture__img').src = user.url;
+  userElement.querySelector('.picture__img').alt = user.description;
+  userElement.querySelector('.picture__likes').textContent = user.likes;
+  userElement.querySelector('.picture__comments').textContent = user.comments.length;
 
   picturesContainerFragment.append(userElement);
 });
