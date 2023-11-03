@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement, createIdGenerator} from 'util.js';
+import {getRandomInteger, getRandomArrayElement, createIdGenerator} from './util.js';
 
 const PHOTO_COUNT = 25;
 const AVATAR_COUNT = 6;
