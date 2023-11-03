@@ -1,2 +1,2 @@
-import {getDataArray} from 'data.js';
+import {getDataArray} from './data.js';
 getDataArray();
