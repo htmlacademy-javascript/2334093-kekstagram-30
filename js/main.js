@@ -1,3 +1,3 @@
 import {getDataArray} from './data.js';
-import {picturesContainer} from './rendering-thumbnails.js';
+import './rendering-thumbnails.js';
 getDataArray();
