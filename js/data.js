@@ -64,5 +64,5 @@ const createData = function (index) {
 const getDataArray = function() {
   return Array.from({length: PHOTO_COUNT}, (_, pictureIndex) => createData(pictureIndex + 1));
 };
-
-export {getDataArray};
+const pictures = getDataArray();
+export {pictures, getDataArray};

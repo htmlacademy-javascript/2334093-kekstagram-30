@@ -1,6 +1,4 @@
-import {getDataArray} from './data.js';
-import {renderThumbnails} from './rendering-thumbnails.js';
+import { pictures, getDataArray } from './data.js';
+import { renderGallery } from './gallery.js';
 
-const pictures = getDataArray();
-
-renderThumbnails(pictures);
+renderGallery(pictures);
