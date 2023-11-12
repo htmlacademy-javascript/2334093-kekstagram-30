@@ -16,6 +16,7 @@ const closeEditingFormModal = function() {
   imageEditingForm.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
 
+  uploadImageInput.value = '';
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
