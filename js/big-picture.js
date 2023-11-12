@@ -98,4 +98,4 @@ function onDocumentKeydown (evt) {
 closePictureButton.addEventListener('click', onClosePictureButtonClick);
 moreCommentsLoader.addEventListener('click', onCommentsLoaderClick);
 
-export {openPictureModal};
+export {openPictureModal, bodyElement};
