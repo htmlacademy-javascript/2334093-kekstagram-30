@@ -1,2 +1,4 @@
-import {getDataArray} from 'data.js';
-getDataArray();
+import { pictures } from './data.js';
+import { renderGallery } from './gallery.js';
+
+renderGallery(pictures);

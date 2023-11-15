@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement, createIdGenerator} from 'util.js';
+import {getRandomInteger, getRandomArrayElement, createIdGenerator} from './util.js';
 
 const PHOTO_COUNT = 25;
 const AVATAR_COUNT = 6;
@@ -6,7 +6,7 @@ const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
 const COMMENT_COUNT = 30;
 
-const COMMENT_MESSAGE = [
+const COMMENT_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -27,7 +27,7 @@ const NAMES = [
   'Хосе Гарсия',
 ];
 
-const PHOTO_DESCRIPTION = [
+const PHOTO_DESCRIPTIONS = [
   'Милый котик',
   'Собачка мальтипу',
   'Маяк на скале',
@@ -38,7 +38,7 @@ const PHOTO_DESCRIPTION = [
 const createMessageData = function () {
   return Array.from(
     {length: getRandomInteger(1, 2)},
-    () => getRandomArrayElement(COMMENT_MESSAGE)
+    () => getRandomArrayElement(COMMENT_MESSAGES)
   ).join(' ');
 };
 
@@ -55,7 +55,7 @@ const createData = function (index) {
   return {
     id: index,
     url: `photos/${ index }.jpg`,
-    description: getRandomArrayElement(PHOTO_DESCRIPTION),
+    description: getRandomArrayElement(PHOTO_DESCRIPTIONS),
     likes: getRandomInteger(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
     comments: Array.from({length: getRandomInteger(0, COMMENT_COUNT)}, createCommentsData),
   };
@@ -64,5 +64,5 @@ const createData = function (index) {
 const getDataArray = function() {
   return Array.from({length: PHOTO_COUNT}, (_, pictureIndex) => createData(pictureIndex + 1));
 };
-
-export {getDataArray};
+const pictures = getDataArray();
+export {pictures, getDataArray};
