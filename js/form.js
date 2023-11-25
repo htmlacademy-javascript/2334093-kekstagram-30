@@ -1,5 +1,10 @@
-import { bodyElement } from './big-picture';
-import { isEscapeKey } from './util';
+import { bodyElement } from './big-picture.js';
+import { isEscapeKey } from './util.js';
+import {
+  init,
+  init as initEffect,
+  reset as resetEffect
+} from './effect.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -116,3 +121,4 @@ pristine.addValidator(
 uploadImageInput.addEventListener('change', onUploadImageInputChange);
 closeImageEditingFormButton.addEventListener('click', onCloseImageEditingFormButtonClick);
 uploadForm.addEventListener('submit', onFormSubmit);
+initEffect();

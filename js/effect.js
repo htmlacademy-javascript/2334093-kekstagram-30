@@ -8,6 +8,10 @@ const Effect = {
 };
 
 const effectToFilter = {
+  [Effect.DEFAULT]: {
+    style: '',
+    unit: '',
+  },
   [Effect.CHROME]: {
     style: 'grayscale',
     unit: '',
@@ -82,7 +86,8 @@ const setImgStyle = function() {
   }
 
   const { value } = effectLevelElement;
-  const { style, unit} = `${style}(${value}${unit})`;
+  const { style, unit} = effectToFilter[chosenEffect];
+  imgElement.style.filter = `${style}(${value}${unit})`;
 };
 
 const showSlider = function() {
@@ -141,7 +146,7 @@ const reset = function() {
   setEffect(Effect.DEFAULT);
 };
 
-onEffectsChange = function(evt) {
+const onEffectsChange = function(evt) {
   setEffect(evt.target.value);
 };
 
