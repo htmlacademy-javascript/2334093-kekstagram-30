@@ -1,10 +1,10 @@
 import { bodyElement } from './big-picture.js';
 import { isEscapeKey } from './util.js';
 import {
-  init,
   init as initEffect,
   reset as resetEffect
 } from './effect.js';
+import { resetScale } from './scale.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -36,6 +36,8 @@ const openEditingFormModal = function() {
 const closeEditingFormModal = function() {
   uploadImageInput.value = '';
   // uploadImageInput.reset();
+  resetScale();
+  resetEffect();
   pristine.reset();
   imageEditingForm.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
