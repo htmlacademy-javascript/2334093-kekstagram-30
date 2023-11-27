@@ -35,7 +35,6 @@ const openEditingFormModal = function() {
 
 const closeEditingFormModal = function() {
   uploadImageInput.value = '';
-  // uploadImageInput.reset();
   resetScale();
   resetEffect();
   pristine.reset();
