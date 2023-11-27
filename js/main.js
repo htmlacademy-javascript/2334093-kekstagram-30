@@ -1,6 +1,17 @@
-import { pictures } from './data.js';
 import { renderGallery } from './gallery.js';
 import './form.js';
 import './effect.js';
+import { loadPictures } from './api.js';
+import { showErrorMessage } from './util.js';
 
-renderGallery(pictures);
+async function bootstrap() {
+  try {
+    const pictures = await loadPictures();
+    renderGallery(pictures);
+  } catch (error) {
+    showErrorMessage();
+  }
+
+}
+
+bootstrap();

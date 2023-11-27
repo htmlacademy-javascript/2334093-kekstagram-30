@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram';
+const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram]';
 
 const ServerRoute = {
   GET_DATA: '/data',
@@ -22,7 +22,7 @@ async function request(url, method = HttpMethod.GET, body = null) {
     throw new Error(ErorrText[method]);
   }
 
-  return response.json;
+  return response.json();
 }
 
 async function loadPictures() {
