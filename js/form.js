@@ -6,6 +6,7 @@ import {
 } from './effect.js';
 import { resetScale } from './scale.js';
 import { sendPicture } from './api.js';
+import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -104,11 +105,19 @@ function onDocumentKeydown(evt) {
 }
 
 async function sendForm(formElement) {
-  if (pristine.validate()) {
+  if (!pristine.validate()) {
+    return;
+  }
+
+  try {
     toggleSubmitButton(true);
     await sendPicture(new FormData(formElement));
     toggleSubmitButton(false);
     closeEditingFormModal();
+    showSuccessMessage();
+  } catch {
+    showErrorMessage();
+    toggleSubmitButton(false);
   }
 }
 
