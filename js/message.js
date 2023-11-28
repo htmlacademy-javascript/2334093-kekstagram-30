@@ -26,9 +26,17 @@ function onDocumentKeydown (evt) {
   }
 }
 
+function onBodyClick(evt) {
+  if (evt.target.closest('.success__inner') || evt.target.closest('.error__inner')){
+    return;
+  }
+  hideMessage();
+}
+
 const showMessage = function(element, buttonClass) {
   document.body.append(element);
 
+  document.body.addEventListener('click', onBodyClick);
   element.querySelector(buttonClass).addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
 };
