@@ -13,6 +13,7 @@ const hideMessage = function() {
   const existElement = document.querySelector('.success') || document.querySelector('.error');
   existElement.remove();
   document.removeEventListener('keydown', onDocumentKeydown);
+  document.body.removeEventListener('keydown', onBodyClick);
 };
 
 const onCloseButtonClick = function() {

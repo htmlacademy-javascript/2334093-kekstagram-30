@@ -97,8 +97,12 @@ const onCloseImageEditingFormButtonClick = function() {
   closeEditingFormModal();
 };
 
+const isErorMessageExists = function() {
+  return Boolean(document.querySelector('.error'));
+};
+
 function onDocumentKeydown(evt) {
-  if (isEscapeKey(evt) && !isFieldFocused()) {
+  if (isEscapeKey(evt) && !isFieldFocused() && !isErorMessageExists()) {
     evt.preventDefault();
     closeEditingFormModal();
   }

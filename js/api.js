@@ -2,7 +2,7 @@ const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram';
 
 const ServerRoute = {
   GET_DATA: '/data',
-  SEND_DATA: '/ww',
+  SEND_DATA: '/',
 };
 
 const HttpMethod = {
