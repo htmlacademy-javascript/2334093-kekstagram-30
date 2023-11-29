@@ -10,6 +10,8 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+const FILE_TYPES = ['.jpg', '.jpeg', '.png'];
+
 const ErorrText = {
   INVALID_COUNT: `Максимум ${MAX_HASHTAG_COUNT} хештегов`,
   NOT_UNIQUE: 'Хештеги должны быть уникальными',
@@ -22,6 +24,8 @@ const SubmitButtonCaption = {
 };
 
 const uploadForm = document.querySelector('.img-upload__form');
+const imageUploadPreviewElement = uploadForm.querySelector('.img-upload__preview img');
+const effectsPreviews = uploadForm.querySelectorAll('.effects__preview');
 const uploadImageInput = uploadForm.querySelector('.img-upload__input');
 const imageEditingForm = uploadForm.querySelector('.img-upload__overlay');
 const closeImageEditingFormButton = imageEditingForm.querySelector('.img-upload__cancel');
@@ -57,11 +61,17 @@ const closeEditingFormModal = function() {
   bodyElement.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onDocumentKeydown);
+
 };
 
 const isFieldFocused = function() {
   return document.activeElement === hashtagsInput ||
   document.activeElement === commentDescriptionInput;
+};
+
+const isValidType = function(file) {
+  const fileName = file.name.toLowerCase();
+  return FILE_TYPES.some((it) => fileName.endsWith(it));
 };
 
 const normalizeTags = function(tagString) {
@@ -90,6 +100,15 @@ const validateHashtagLimit = function(value) {
 };
 
 const onUploadImageInputChange = function() {
+  const file = uploadImageInput.files[0];
+
+  if (file && isValidType(file)) {
+    imageUploadPreviewElement.src = URL.createObjectURL(file);
+    effectsPreviews.forEach((preview) => {
+      preview.style.backgroundImage = `url('${imageUploadPreviewElement.src}')`;
+    });
+  }
+
   openEditingFormModal();
 };
 
