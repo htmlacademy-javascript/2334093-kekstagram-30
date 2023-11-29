@@ -123,3 +123,4 @@ uploadImageInput.addEventListener('change', onUploadImageInputChange);
 closeImageEditingFormButton.addEventListener('click', onCloseImageEditingFormButtonClick);
 uploadForm.addEventListener('submit', onFormSubmit);
 initEffect();
+
