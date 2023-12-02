@@ -54,6 +54,8 @@ const openEditingFormModal = function() {
 
 const closeEditingFormModal = function() {
   uploadImageInput.value = '';
+  hashtagsInput.value = '';
+  commentDescriptionInput.value = '';
   resetScale();
   resetEffect();
   pristine.reset();
