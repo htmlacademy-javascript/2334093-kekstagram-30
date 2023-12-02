@@ -23,17 +23,17 @@ const FilterHandlers = {
   [FilterOption.DEFAULT]: (data) => data,
 
   [FilterOption.RANDOM]: (data) => {
-    const randomIndexList = [];
+    const randomIndexes = [];
     const max = Math.min(MAX_RANDOM_FILTER, data.length);
 
-    while (randomIndexList.length < max) {
+    while (randomIndexes.length < max) {
       const index = getRandomIndex(0, data.length);
 
-      if (!randomIndexList.includes(index)) {
-        randomIndexList.push(index);
+      if (!randomIndexes.includes(index)) {
+        randomIndexes.push(index);
       }
     }
-    return randomIndexList.map((i) => data[i]);
+    return randomIndexes.map((i) => data[i]);
   },
 
   [FilterOption.DISCUSSED]: function(data) {
